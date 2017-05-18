@@ -1,0 +1,35 @@
+<md-dialog flex="30" aria-label="Login">
+    <header>
+      <md-toolbar layout-align="center center">
+      <div class="md-toolbar-tools">
+          <h2>Login</h2>
+        </div>
+      </md-toolbar>
+    </header>
+
+    <main flex>
+      <md-dialog-content>
+        <div class="md-dialog-content">
+          <md-input-container class="md-block">
+            <label>Username</label>
+            <input type="text" ng-model="model.username" />
+          </md-input-container>
+
+          <md-input-container class="md-block">
+            <label>Password</label>
+            <input type="password" ng-model="model.password" />
+          </md-input-container>
+        </div>
+      </md-dialog-content>
+    </main>
+    
+    <footer>
+      <div layout="row" layout-align="center center" flex>
+        <md-button style="margin:0px; line-height: 50px; /*Tmp fix for button*/ " class="md-raised md-primary" flex="100" md-primary ng-click="auth()" target="_blank">
+          Sign In
+        </md-button>
+      </div>
+    </footer>
+
+    
+</md-dialog>
