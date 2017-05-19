@@ -4,10 +4,8 @@
 angular.module('myApp', [
   'ngRoute',
   'ngMaterial',
-  'myApp.view1',
-  'myApp.view2',
   'myApp.loginComponent',
-  'myApp.version'
+  'myApp.homeComponent',
 ]).
 config(['$locationProvider', '$routeProvider', '$mdThemingProvider', function($locationProvider, $routeProvider, $mdThemingProvider) {
   $locationProvider.hashPrefix('!');

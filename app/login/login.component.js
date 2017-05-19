@@ -17,7 +17,7 @@ function LoginComponent($mdDialog) {
         password: ""
     }
 
-    $mdDialog.show({
+    this.dialog = $mdDialog.show({
       templateUrl: 'login/login.component.html',
       clickOutsideToClose:false,
       fullscreen: true,
