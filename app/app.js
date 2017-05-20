@@ -1,11 +1,11 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('myApp', [
+angular.module('app', [
   'ngRoute',
-  'ngMaterial',
-  'myApp.loginComponent',
-  'myApp.homeComponent',
+  'app.shared',
+  'app.loginComponent',
+  'app.homeComponent'
 ]).
 config(['$locationProvider', '$routeProvider', '$mdThemingProvider', function($locationProvider, $routeProvider, $mdThemingProvider) {
   $locationProvider.hashPrefix('!');

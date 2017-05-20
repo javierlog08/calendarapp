@@ -1,27 +1,25 @@
 'use strict';
 
-angular.module('myApp.loginComponent', ['ngRoute', 'ngMaterial'])
+angular.module('app.loginComponent', ['ngRoute', 'ngMaterial'])
 .config(function($routeProvider) {
   $routeProvider.when('/login', {
     template: '<login-component></login-component>'
   });
 })
 .component('loginComponent', {
-  controller: LoginComponent
+  controller: LoginComponent,
 });
 
 function LoginComponent($mdDialog) {
-    
-    this.model = {
-        username: "",
-        password: ""
-    }
 
-    this.dialog = $mdDialog.show({
+  // Angular Material Dialog
+  $mdDialog.show({
       templateUrl: 'login/login.component.html',
-      clickOutsideToClose:false,
+      clickOutsideToClose: false,
       fullscreen: true,
       parent:angular.element(document.body),
+      controller: "loginController",
+      controllerAs: "loginCtrl"
     });
 
 }

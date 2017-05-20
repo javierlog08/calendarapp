@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.homeComponent', ['ngRoute', 'ngMaterial'])
+angular.module('app.homeComponent', ['ngRoute', 'ngMaterial'])
 .config(function($routeProvider) {
   $routeProvider.when('/home', {
     template: '<home-component></home-component>'
@@ -11,6 +11,4 @@ angular.module('myApp.homeComponent', ['ngRoute', 'ngMaterial'])
   templateUrl: 'home/home.component.html'
 });
 
-function HomeComponent() {
-    
-}
+function HomeComponent() {}
