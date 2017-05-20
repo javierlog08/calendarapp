@@ -1,0 +1,15 @@
+.home-component {
+
+    text-align: center;
+    
+
+    > div:first-child {
+        min-height: 600px;
+    }
+
+    .p {
+        border-style: dotted;
+        padding:20px;
+    }
+    
+}
