@@ -1,5 +1,6 @@
 .home-component {
-  text-align: center; }
+  text-align: center;
+  min-height: 100vh; }
   .home-component > div:first-child {
     min-height: 600px; }
   .home-component .p {
