@@ -4,8 +4,6 @@ angular.module('app.loginComponent')
 .controller("loginController",LoginController)
 
 function LoginController(authService, $mdDialog, $location) {
-
-    this.logged = false;
     
     this.model = {
         username: "",

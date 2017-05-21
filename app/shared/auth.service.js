@@ -17,7 +17,7 @@ function AuthService($q, $rootScope) {
         checkAccess: function() {
             var defer = $q.defer();
             /* TODO: here you must implemnt your access service logistic */
-            defer.resolve(true);
+            defer.resolve(false);
             return defer.promise;
         }
     }

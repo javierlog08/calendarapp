@@ -8,8 +8,13 @@ module.exports = function(config) {
       'bower_components/angular/angular.js',
       'bower_components/angular-route/angular-route.js',
       'bower_components/angular-mocks/angular-mocks.js',
-      'components/**/*.js',
-      'view*/**/*.js'
+      'bower_components/angular-animate/angular-animate.min.js',
+      'bower_components/angular-aria/angular-aria.min.js',
+      'bower_components/angular-messages/angular-messages.min.js',
+      'bower_components/angular-material/angular-material.min.js',
+      'shared/shared.module.js',
+      'shared/**/*.js',
+      'login/**/*.js'
     ],
 
     autoWatch: true,
