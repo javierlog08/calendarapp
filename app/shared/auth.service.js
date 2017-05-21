@@ -3,11 +3,22 @@
 angular.module("app.shared")
 .factory('authService',AuthService);
 
-function AuthService() {
+function AuthService($q, $rootScope) {
+
     return {
-        isLogged: false,
+
         login: function(model) {
-            this.isLogged = true;
+            var defer = $q.defer();
+            /* TODO: here you must implemnt your login service logistic */
+            defer.resolve(true); 
+            return defer.promise;
+        },
+
+        checkAccess: function() {
+            var defer = $q.defer();
+            /* TODO: here you must implemnt your access service logistic */
+            defer.resolve(true);
+            return defer.promise;
         }
     }
 }

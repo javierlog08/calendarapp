@@ -12,6 +12,23 @@ config(['$locationProvider', '$routeProvider', '$mdThemingProvider', function($l
 
   $routeProvider.otherwise({redirectTo: '/login'});
 
-  /*$mdThemingProvider.theme('default')
-    .primaryPalette('blue'); */
-}]);
+  $mdThemingProvider.theme('default')
+    .primaryPalette('indigo'); 
+
+}]).run(function($rootScope, $location, authService){
+
+    $rootScope.$on("$routeChangeSuccess", function(event, current, prev) {
+      // If our component need to be authenticated to access, 
+      // is defined on routeProvider for evry component in this app.
+      if(current.$$route.access){
+
+        authService.checkAccess().then(function(authenticated){
+          if(!authenticated){
+            $location.url('/login');
+          }
+        });
+
+      }
+    });
+
+});

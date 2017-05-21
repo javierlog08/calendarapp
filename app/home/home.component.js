@@ -3,7 +3,8 @@
 angular.module('app.homeComponent', ['ngRoute', 'ngMaterial'])
 .config(function($routeProvider) {
   $routeProvider.when('/home', {
-    template: '<home-component></home-component>'
+    template: '<home-component></home-component>',
+    access: true
   });
 })
 .component('homeComponent', {

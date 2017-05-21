@@ -3,7 +3,8 @@
 angular.module('app.loginComponent', ['ngRoute', 'ngMaterial'])
 .config(function($routeProvider) {
   $routeProvider.when('/login', {
-    template: '<login-component></login-component>'
+    template: '<login-component></login-component>',
+    access: false
   });
 })
 .component('loginComponent', {

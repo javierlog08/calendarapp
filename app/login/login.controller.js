@@ -13,11 +13,12 @@ function LoginController(authService, $mdDialog, $location) {
     }
 
     this.auth = function() {
-      authService.login(this.model);
-      if(authService.isLogged) {
-        $mdDialog.hide();
-        $location.url('/home');
-      }
+      authService.login(this.model).then(function(logged){
+          if(logged) {
+            $mdDialog.hide();
+            $location.url('/home');
+          }
+      });
     }
 
 }
