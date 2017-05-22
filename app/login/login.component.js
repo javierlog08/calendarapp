@@ -13,10 +13,17 @@ angular.module('app.loginComponent', ['ngRoute', 'ngMaterial'])
 
 function LoginComponent($mdDialog) {
 
+  var formDialog;
+  var loader;
+
   // Angular Material Dialog
-  $mdDialog.show({
+  formDialog = $mdDialog.show({
       templateUrl: 'login/login.component.html',
       clickOutsideToClose: false,
+      escapeToClose: false,
+      locals:{
+        "loader":loader
+      },
       fullscreen: true,
       parent:angular.element(document.body),
       controller: "loginController",

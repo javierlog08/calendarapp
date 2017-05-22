@@ -1,0 +1,29 @@
+.loader-service {
+    min-width:0px;
+    background-color: #2d2d2d;
+    md-dialog-content {
+        overflow: hidden;
+    }
+}
+
+/*
+* FIX 
+* Multiple dialog overlay -> https://github.com/angular/material/issues/7262
+* With this will show loader backdrop when one dialog is over another.
+*/
+.md-dialog-backdrop {
+    z-index: 79;
+}
+
+.md-dialog-backdrop ~ .md-dialog-backdrop {
+    z-index: 81;
+}
+
+.md-dialog-container {
+    z-index: 80;
+}
+
+.md-dialog-container ~ .md-dialog-container {
+    z-index: 82;
+}
+/* EN FIX*/

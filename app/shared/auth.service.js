@@ -10,7 +10,7 @@ function AuthService($q, $rootScope) {
         login: function(model) {
             var defer = $q.defer();
             /* TODO: here you must implemnt your login service logistic */
-            defer.resolve(true); 
+            defer.resolve(false); 
             return defer.promise;
         },
 
@@ -19,6 +19,6 @@ function AuthService($q, $rootScope) {
             /* TODO: here you must implemnt your access service logistic */
             defer.resolve(false);
             return defer.promise;
-        }
+        }   
     }
 }
