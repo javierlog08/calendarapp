@@ -1,26 +1,48 @@
 describe('loginController', function() {
   
   var $loginController;
-  
+  var $form;
+  var $rootScope;
+  var $scope;
+
   beforeEach(function() {
-    module('app.loginComponent')
+    module('app.loginComponent');
     module('app.shared');
   });
-  beforeEach(inject(function(_$controller_) {
-    $loginController = _$controller_;
+  beforeEach(inject(function($controller, authService, $q, _$rootScope_) {
+
+    $rootScope = _$rootScope_;
+    $scope = $rootScope.$new();
+    $loginController = $controller("loginController",{
+      scope:$scope
+    });
+
+    spyOn(authService,"login").and.callFake(function(model) { 
+       var defer = $q.defer();
+       var errors =  [];
+       if(model.username == "myuser" && mode.password == "mypass") {
+          defer.resolve(errors);
+       } else {
+         errors.push({"login-error":"Wrong username or password"});
+         defer.resolve(errors);
+       }
+
+       return defer.promise;
+    });
+
   }));
 
-  it('Should return a promise', function() {
+  it('loginController - should have a  member model for the form defined', function() {
+    expect($loginController.model).toBeDefined();
+  });
 
-    var authSpy = jasmine.createSpy('auth');
+  it('loginController - auth method should set loginForm invalid when calling with wrong user credentials.',function() {
+        
+    $loginController.auth($scope.loginForm);
 
-    var ctrl = $loginController('loginController', null);
+    $rootScope.$apply(); // resolve promises in the services
 
-    ctrl.auth = authSpy;
-
-    ctrl.auth();
-
-    expect(authSpy).toHaveBeenCalled();
+    expect($loginController.loginForm.$invalid).toBeTruthy();
 
   });
 

@@ -5,26 +5,25 @@ angular.module('app.loginComponent')
 
 function LoginController(authService, $mdDialog, $location, loaderService) {
     
-    this.model = {
+    var vm = this;
+
+    vm.model = {
         username: "",
         password: ""
     }
 
-    this.errors = {};
-
-    this.auth = function(loginForm) {
-
+    vm.auth = function(loginForm) {
+      
       loaderService.showLoader();
-
       authService.login(this.model).then(function(errors){
           loaderService.hideLoader();
           if(errors.length > 0) {
-            $mdDialog.hide();
-            $location.url('/home');
-          } else {
             loginForm.username.$setValidity("login-error",false);
             loginForm.password.$setValidity("login-error",false);
             loginForm.$setSubmitted(); // to apply validations
+          } else {
+            $mdDialog.hide();
+            $location.url('/home');
           }
       });
     }

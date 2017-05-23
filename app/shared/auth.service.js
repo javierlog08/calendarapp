@@ -10,7 +10,7 @@ function AuthService($q, $rootScope) {
         login: function(model) {
             var defer = $q.defer();
             /* TODO: here you must implemnt your login service logistic */
-            defer.resolve(false); 
+            defer.resolve([{"login-error":""}]); 
             return defer.promise;
         },
 
