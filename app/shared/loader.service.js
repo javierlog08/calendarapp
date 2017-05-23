@@ -1,35 +1,29 @@
 'use strict';
 
 angular.module('app.shared')
-.factory('loaderService',LoaderService);
+  .factory('loaderService', LoaderService);
 
-function LoaderService($mdDialog, $q) {
+function LoaderService($mdDialog, $timeout) {
 
   var ls = this;
-  var defer = $q.defer();
 
-  ls.loader = $mdDialog;
+  ls.loader = $mdDialog.alert({
+    templateUrl: 'shared/loader.service.html',
+    clickOutsideToClose: false,
+    escapeToClose: false,
+    fullscreen: false,
+    multiple: true
+  });
 
-  ls.show = function() {
-    ls.loader.show({
-      templateUrl:'shared/loader.service.html',
-      clickOutsideToClose: false,
-      escapeToClose: false,
-      fullscreen: false,
-      multiple: true,
-      onComplete: function(r) {
-        defer.resolve(r);
-      },
-      controller: function($mdDialog) {
-        ls.loader = $mdDialog;
-      }
-    });
+  ls.show = function () {
+    $mdDialog.show(ls.loader);
   }
 
-  ls.hide = function() {
-    defer.promise.then(function(r) {
-      ls.loader.hide();
-    });   
+  ls.hide = function () {
+    // The loader dialog doesn't exists, when close is called this will fix that.
+    $timeout(function () {
+      $mdDialog.hide(ls.loader);
+    }, 1000);
   }
 
   return {
