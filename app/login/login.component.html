@@ -9,27 +9,33 @@
 
     <main flex>
       <md-dialog-content>
-        <div class="md-dialog-content">
-          <md-input-container class="md-block">
-            <label>Username</label>
-            <input type="text" ng-model="loginCtrl.model.username" />
-          </md-input-container>
+        <form name="loginForm">
+          <div class="md-dialog-content">
+            <md-input-container class="md-block">
+              <label>Username</label>
+              <input name="username" type="text" login-form ng-model="loginCtrl.model.username" />
+              <div ng-messages="loginForm.username.$error">
+                <div ng-message="login-error">Wrong username or password.</div>
+              </div>
+            </md-input-container>
 
-          <md-input-container class="md-block">
-            <label>Password</label>
-            <input type="password" ng-model="loginCtrl.model.password" />
-          </md-input-container>
-        </div>
+            <md-input-container class="md-block">
+              <label>Password</label>
+              <input name="password" type="password" ng-model="loginCtrl.model.password" />
+              <div ng-messages="loginForm.password.$error">
+                <div ng-message="login-error">Wrong username or password.</div>
+              </div>
+            </md-input-container>
+          </div>
+        </form>
       </md-dialog-content>
     </main>
     
     <footer>
       <div layout="row" layout-align="center center" flex>
-        <md-button class="md-raised md-primary" flex="100" md-primary ng-click="loginCtrl.auth()" target="_blank">
+        <md-button class="md-raised md-primary" flex="100" md-primary ng-click="loginCtrl.auth(loginForm)" target="_blank">
           Sign In
         </md-button>
       </div>
     </footer>
-
-    
 </md-dialog>

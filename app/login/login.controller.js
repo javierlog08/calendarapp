@@ -10,15 +10,21 @@ function LoginController(authService, $mdDialog, $location, loaderService) {
         password: ""
     }
 
-    this.auth = function() {
+    this.errors = {};
+
+    this.auth = function(loginForm) {
 
       loaderService.showLoader();
 
-      authService.login(this.model).then(function(logged){
+      authService.login(this.model).then(function(errors){
           loaderService.hideLoader();
-          if(logged) {
+          if(errors.length > 0) {
             $mdDialog.hide();
             $location.url('/home');
+          } else {
+            loginForm.username.$setValidity("login-error",false);
+            loginForm.password.$setValidity("login-error",false);
+            loginForm.$setSubmitted(); // to apply validations
           }
       });
     }
