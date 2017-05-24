@@ -54,8 +54,12 @@ describe('Testing loginController', function() {
 
   }));
 
-  it('>> loginController - should have a  member model for the form defined', function() {
+  it('>> loginController - should have a  member "model" for the form defined', function() {
     expect($loginController.model).toBeDefined();
+  });
+
+  it('>> loginController - should have a  member "loginErrors" for the form defined', function() {
+    expect($loginController.formErrors).toBeDefined();
   });
 
   it('>> loginController.auth() - if is auth called should show a loader with loaderService',function() {
@@ -82,7 +86,7 @@ describe('Testing loginController', function() {
     expect(loaderServiceSpy.hideLoader).toHaveBeenCalled();
   });
 
-  it('>> loginController.auth() - should set validation error on formController inputs',function() {
+  it('>> loginController.auth() - should set inputs as invalid on formController',function() {
 
     $loginController.model.username = "wronguser";
     $loginController.model.password = "wrongpass";
@@ -105,6 +109,18 @@ describe('Testing loginController', function() {
     $rootScope.$apply(); // resolve promises in the services
 
     expect($formMock.$setSubmitted).toHaveBeenCalled();
+  });
+
+  it('>> loginController.auth() - should fill loginErrors property with errors',function() {
+
+    $loginController.model.username = "wronguser";
+    $loginController.model.password = "wrongpass";
+
+    $loginController.auth($formMock);
+
+    $rootScope.$apply(); // resolve promises in the services
+
+    expect($loginController.formErrors.length).toBeGreaterThan(0);
   });
 
   it('>> loginController.auth() - if form success all validations should hide dialog for login-component',function() {
