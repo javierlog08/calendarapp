@@ -1,6 +1,7 @@
 logs/*
 !.gitkeep
-!doc/.gitkeep
+docs/*
+!docs/.gitkeep
 node_modules/
 bower_components/
 tmp

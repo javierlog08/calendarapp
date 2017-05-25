@@ -10,10 +10,17 @@
  */
 var LoaderService = function($mdDialog, $timeout) {
 
-  var sv = this;
+  /**
+  * @property {LoaderService} LoaderService use to reference this class itself when using over others functions scopes
+  */
+  var LoaderService = this;
 
 
-  sv.loader = $mdDialog.alert({
+  /**
+   * @property {$mdDialog} loader $mdDialogPreset angular material component used to create the loader for this app
+   * @memberof LoaderService
+   */
+  LoaderService.loader = $mdDialog.alert({
     templateUrl: 'shared/loader.service.html',
     clickOutsideToClose: false,
     escapeToClose: false,
@@ -27,9 +34,9 @@ var LoaderService = function($mdDialog, $timeout) {
    * @function show
    * @memberof LoaderService
    */
-  sv.show = function () 
+  LoaderService.show = function () 
   {
-      $mdDialog.show(sv.loader);
+      $mdDialog.show(LoaderService.loader);
   }
 
 
@@ -38,19 +45,19 @@ var LoaderService = function($mdDialog, $timeout) {
    * @function hide
    * @memberof LoaderService
    */
-  sv.hide = function () 
+  LoaderService.hide = function () 
   {
       // The loader dialog doesn't exists when hide function is called. 
       // timeout will fix that.
       $timeout(function () {
-        $mdDialog.hide(sv.loader);
+        $mdDialog.hide(LoaderService.loader);
       }, 1000);
   }
 
 
   return {
-      showLoader: sv.show,
-      hideLoader: sv.hide
+      showLoader: LoaderService.show,
+      hideLoader: LoaderService.hide
   }
 
 }

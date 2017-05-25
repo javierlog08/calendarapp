@@ -12,7 +12,10 @@
 var AuthService = function ($q, $rootScope) 
 {
 
-    var sv = this;
+    /**
+     * @property {AuthService} AuthService use to reference this class itself when using over others functions scopes
+     */
+    var AuthService = this;
 
 
     /**
@@ -20,9 +23,9 @@ var AuthService = function ($q, $rootScope)
      * The resoloved promise will return a object array with form errors.
      * @function login
      * @memberof AuthService
-     * @return {Promise} $q.promise
+     * @returns {Promise} $q.promise
      */
-    sv.login = function(model) 
+    AuthService.login = function(model) 
     {
         var defer = $q.defer();
         /* TODO: here you must implemnt your login service logistic */
@@ -36,9 +39,9 @@ var AuthService = function ($q, $rootScope)
      * for authenticated users.
      * @function checkAccess
      * @memberof AuthService
-     * @return {Promise} $q.promise
+     * @returns {Promise} $q.promise
      */
-    sv.checkAccess = function() 
+    AuthService.checkAccess = function() 
     {
         var defer = $q.defer();
         /* TODO: here you must implemnt your access service logistic */
@@ -48,8 +51,8 @@ var AuthService = function ($q, $rootScope)
 
 
     return {
-        login: sv.login,
-        checkAccess: sv.checkAccess  
+        login: AuthService.login,
+        checkAccess: AuthService.checkAccess  
     }
 
 }
