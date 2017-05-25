@@ -1,13 +1,19 @@
 'use strict';
 
-angular.module('app.shared')
-  .factory('loaderService', LoaderService);
+/**
+ * User this service to show a dialog loader over the app
+ * @ngdoc service
+ * @name LoaderService
+ * @memberof shared
+ * @param {Service} $mdDialog
+ * @param {Service} $timeout
+ */
+var LoaderService = function($mdDialog, $timeout) {
 
-function LoaderService($mdDialog, $timeout) {
+  var sv = this;
 
-  var ls = this;
 
-  ls.loader = $mdDialog.alert({
+  sv.loader = $mdDialog.alert({
     templateUrl: 'shared/loader.service.html',
     clickOutsideToClose: false,
     escapeToClose: false,
@@ -15,20 +21,38 @@ function LoaderService($mdDialog, $timeout) {
     multiple: true
   });
 
-  ls.show = function () {
-    $mdDialog.show(ls.loader);
+
+  /**
+   * Call this method to show the loader over the app
+   * @function show
+   * @memberof LoaderService
+   */
+  sv.show = function () 
+  {
+      $mdDialog.show(sv.loader);
   }
 
-  ls.hide = function () {
-    // The loader dialog doesn't exists, when close is called this will fix that.
-    $timeout(function () {
-      $mdDialog.hide(ls.loader);
-    }, 1000);
+
+  /**
+   * You can use this method to hide a loader over the app
+   * @function hide
+   * @memberof LoaderService
+   */
+  sv.hide = function () 
+  {
+      // The loader dialog doesn't exists when hide function is called. 
+      // timeout will fix that.
+      $timeout(function () {
+        $mdDialog.hide(sv.loader);
+      }, 1000);
   }
+
 
   return {
-    showLoader: ls.show,
-    hideLoader: ls.hide
+      showLoader: sv.show,
+      hideLoader: sv.hide
   }
 
 }
+
+angular.module('app.shared').factory('loaderService', LoaderService);

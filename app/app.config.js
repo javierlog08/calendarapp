@@ -2,14 +2,15 @@
 
 /**
  * App configuration
- * @memberof app
  * @ngdoc config
+ * @name AppConfig
+ * @memberof app
  * @name Config
  * @param {Service} $locationProvider
  * @param {Service} $routeProvider
  * @param {Service} $mdThemingProvider
  */
-var Config = function ($locationProvider, $routeProvider, $mdThemingProvider) 
+var AppConfig = function ($locationProvider, $routeProvider, $mdThemingProvider) 
 {
     $locationProvider.hashPrefix('!');
 
@@ -17,8 +18,6 @@ var Config = function ($locationProvider, $routeProvider, $mdThemingProvider)
 
     $mdThemingProvider.theme('default')
         .primaryPalette('indigo');
-
 }
 
-angular.module('app')
-    .config(Config);
+angular.module('app').config(AppConfig);

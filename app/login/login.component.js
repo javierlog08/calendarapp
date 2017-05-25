@@ -1,20 +1,16 @@
 'use strict';
 
-angular.module('app.loginComponent', ['ngRoute', 'ngMaterial'])
-.config(function($routeProvider) {
-  $routeProvider.when('/login', {
-    template: '<login-component></login-component>',
-    access: false
-  });
-})
-.component('loginComponent', {
-  controller: LoginComponent,
-});
-
-function LoginComponent($mdDialog) {
-  
-  // Angular Material Dialog
-  $mdDialog.show({
+/**
+ * This angular component shows a dialog with a form to login the users in to the app.
+ * @ngdoc component
+ * @name LoginComponent
+ * @memberof app
+ * @param {Service} $mdDialog
+ */
+var LoginComponent = function LoginComponent($mdDialog) 
+{
+    // Angular Material Dialog
+    $mdDialog.show({
       templateUrl: 'login/login.component.html',
       clickOutsideToClose: false,
       escapeToClose: false,
@@ -23,5 +19,28 @@ function LoginComponent($mdDialog) {
       controller: "loginController",
       controllerAs: "loginCtrl"
     });
-
 }
+
+
+/**
+ * This function is used to set routing configuration in the component
+ * @ngdoc config
+ * @function config
+ * @memberof LoginComponent
+ * @param {Provider} $routerProvider
+ */
+LoginComponent.config = function($routeProvider) 
+{
+    $routeProvider.when('/login', {
+      template: '<login-component></login-component>',
+      access: false
+    });
+}
+
+
+angular.module('app.loginComponent', ['ngRoute', 'ngMaterial'])
+.config(LoginComponent.config)
+.component('loginComponent', {
+  controller: LoginComponent,
+});
+
