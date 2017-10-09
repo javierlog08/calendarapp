@@ -10,5 +10,6 @@ angular.module('app', [
     'ngRoute',
     'app.shared',
     'app.loginComponent',
-    'app.homeComponent'
+    'app.homeComponent',
+    'app.calendarComponent'
 ]);

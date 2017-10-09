@@ -14,7 +14,7 @@ var AppConfig = function ($locationProvider, $routeProvider, $mdThemingProvider)
 {
     $locationProvider.hashPrefix('!');
 
-    $routeProvider.otherwise({ redirectTo: '/login' });
+    $routeProvider.otherwise({ redirectTo: '/home' });
 
     $mdThemingProvider.theme('default')
         .primaryPalette('indigo');

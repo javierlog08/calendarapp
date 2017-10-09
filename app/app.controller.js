@@ -13,7 +13,7 @@
 var AppController = function ($rootScope, $location, authService) 
 {
     // Access controll for the app
-    $rootScope.$on("$routeChangeSuccess", function (event, current, prev) {
+    /*$rootScope.$on("$routeChangeSuccess", function (event, current, prev) {
         // Some components need to be authenticated to access on them, 
         // On evry component is defined on it routeProvider the param "access" as true if you want validate.
         if (current.$$route.access) {
@@ -25,7 +25,7 @@ var AppController = function ($rootScope, $location, authService)
             });
 
         }
-    });
+    });*/
 }
 
 angular.module("app").run(AppController);
