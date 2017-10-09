@@ -27,11 +27,10 @@ var CalendarController = function()
         var calendar = [];
 
         var date = new Date(startDate);
+        var last_date = new Date(startDate); last_date.setDate(last_date.getDate()+days);
         var currentMonthDays = MONTH_DAYS[(date.getMonth()+1)][0];
 
-        var week = 0;
-        var week_day = 0;
-        
+        // Les create a empty callendar grid 5 x 7        
         for(var week=0; week < MONTH_WEEKS; week++  ) {
             calendar[week] = [];
             for(var week_day=0;week_day < WEEK_DAYS; week_day++) {
@@ -44,10 +43,14 @@ var CalendarController = function()
         
         for(var week=0; week < MONTH_WEEKS; week++  ) {
             for(var week_day=fdom.getDay();week_day < WEEK_DAYS; week_day++) {
-                calendar[week][week_day] = fdom.getDate();
+                
+                if(fdom.getTime() >= date.getTime() && fdom.getTime() <= last_date.getTime())
+                    calendar[week][week_day] = fdom.getDate();
+                
                 fdom = new Date(date.getFullYear(),date.getMonth(),fdom.getDate()+1);
             }
         }
+
         console.log(calendar);
     }
 }
