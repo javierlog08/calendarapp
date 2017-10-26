@@ -1,4 +1,13 @@
 
 <h1>Hello Calendar</h1>
 
-{{$ctrl.getCalendarData("2016-07-10",5)}}
+
+<span>Plz Specify the date</span>
+{{$ctrl.setCalendar("2017-10-1",40)}}
+
+<table class="calendar" ng-repeat='month in $ctrl.calendar track by $index'>
+        <tr ng-repeat="week in month track by $index">
+            <td ng-repeat="day in week track by $index"><span ng-if="day>0" ng-class="empty:day==0">{{day}}</span></td>
+        </tr>
+</table>
+<br/><br/>
